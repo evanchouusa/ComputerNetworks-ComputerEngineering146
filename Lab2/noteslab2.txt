@@ -1,0 +1,41 @@
+Step 2:
+
+a. Typing netstat in terminal showed Active Internet connection with the contents of each network prototype (tcp6 or tcp4). It also shows the IP local address, foreign address and the current state it’s in such as established or waiting. Typing man netstat showed many options including a specified queue, address family, default display to show the address of any protocol control blocks associated with sockets and the flow hash, etc.
+
+b. Typing ifconfig configured the network interface parameters. I noticed that when typing man ifconfig, options such as adding another name for the alias parameter, debug, delete (another name for the alias parameter), and more were enabled.
+
+c. Typing hostname displayed the hostname of the system, which for me was local. The command man hostname revealed options such as to include domain information in the printed name or trim off any domain information from the printed name. The hostname utility prints the name of the current host.
+
+d. Typing ping revealed some Apple specified options such as boundif (binding the socket to the interface), traffic_class (set traffic class socket option), and apple_time (display current time). Typing man ping gave the options to count (stop after sending packets), wait (wait seconds between sending each packet), and more having to do with controlling packets in general.
+
+e. Traceroute traces the network host using an IP protocol to search for delay and wait times. Typing man traceroute gives us the options to specify a loose source route gateway, enable socket level debugging, and many more. The mandatory parameter is the destination host name or IP number.
+
+f. Telnet is a remote connection to a server at a specific port. I can connect to scu’s server from this. Without the basic commands, typing telnet itself will give us a command not found.
+
+g. Host and dig performs DNS lookups. I noticed that the command host specifically finds the IP address of a particular domain name while the command dig queries information on DNS. 
+
+h. Route manipulates network routing tables and typing route sets up routes to hosts.
+
+i. Typing the command arp displayed and modified the Internet-to-Ethernet address translation tables used by the address resolution protocol (from hostname to filename).
+
+Step 3:
+
+a. The three hosts I selected were us.yahoo.com (North America), udnnews.com (Asia), and visiteurope.com (Europe). The packet loss for all of them was 0 (0%), as all packets were able to be transmitted. 
+
+b. The RTT for us.yahoo.com was 40.586 ms, the RTT for udnnews.com was 159.850 ms, and the RTT for visiteurope.com was 174.938 ms.
+
+c. The correlation between these measurements to the geographical location of the hosts is that the farther distance and location, greater the Round-Trip-Time (RTT) and packet loss chance. Due to the fact that my location was in the US, the US host’s RTT was significantly faster than the hosts in Asia and Europe.
+
+Step 4: answers are embedded in Lab2part2.c 
+
+Step 5:
+
+a. Typing telnet gaia.cs.umass.edu 80 on my mac connects me to their edu web server and allows me to access the server. Because I didn’t do anything further, the connection was closed by the foreign host.
+
+b. After typing the GET HTTP request, it displays the date, server, content-length, connection and an html file. Then the connection is closed by the foreign host.
+
+c. The name of the file being retrieved in the GET message is /kurose_rose/interactive/index.php. The client is running the HTTP 1.1 version. The format of text and images is in text/html; charset=iso-8859-1. 
+
+Step 6:
+
+Port 80 was the easiest to connect to for all three hosts, though the Asia and Europe host was unable to provide much content while yahoo.com was able to give us an html with information. I also tried ports 8443 and 3389, which was unable to connect for all 3 hosts. 

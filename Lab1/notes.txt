@@ -1,0 +1,21 @@
+Name: Evan Chou
+Date: Friday, 9/25/2020
+Title: Notes in txt file
+Description: This file contains my notes and observations for Lab1
+
+	After compiling and running the first part of Lab1 (my Lab1.c), there was a segmentation fault. This is because the program was running without arguments. When running it with 3000, 500, and 5000, it showed varying delays based on the microseconds entered, with 500 being much less delay than 5000. One thing I learned throughout the lab was certain commands and syntax such as pow for exponents and the usage of threads, which I had never learned prior to this class. In my observations, I discovered that pthread_t is the initialization and creation of a type of thread. pthread_create() takes in 4 arguments: the first is a pointer to the thread id, which I named tid. The second argument specifies attributes. If the value is NULL, then default attributes should be used. The third argument is the name of the function to be executed for the thread to be created. The fourth argument is used to pass arguments to the function, which I named pass function. Lastly, I learned that the n in the main function represented teh microseconds to input from the keyboard for the delay.
+
+	My answers to Step 6-7 are listed as following...
+
+Circuit switching scenario:
+a. 10
+
+Packet switching scenario:
+a. 0.1
+b. 0.9
+c. 0.150095
+d. 0.015009
+e. 0.285180
+f. 2.375301e+12
+g. 3.578913e-06
+h. 2.068117e-18

@@ -1,0 +1,35 @@
+Name: Evan Chou
+Date: November 20, 2020
+Title: Lab8 - GNS3 Network Emulator
+Description: To setup install GNS3 in order to emulate, configure, test, and trouble show virtual networks.
+
+Demoed: Yes
+
+Observations and Responses:
+
+Before I configured router R2 with NAT, I was unable to ping PC1 and PC2 to router R3 or PC3. After configuring f0/0 as a NAT inside and interface f0/1 as a NAT outside for router R2, I was able to pint PC1 and PC2 to R3 and PC3. Basically, as long as we know the ip address, we can ping to it because we've opened it up to the public. I also observed that when PC1 or PC2 pings to PC3, it timeouts 1 or 2 times before it connects. We are still able to get it to function and the NAT table still prints out on R2.
+
+NAT table (ping PC1 to PC3):
+
+R2#
+*Mar  1 00:57:52.767: NAT*: s=10.2.1.2, d=192.1.1.1->10.1.1.2 [23951]
+*Mar  1 00:57:52.767: NAT*: s=10.2.1.2, d=192.1.1.1->10.1.1.2 [23952]
+*Mar  1 00:57:53.747: NAT*: s=10.1.1.2->192.1.1.1, d=10.2.1.2 [23953]
+
+Note that table will continue if I don't stop it from continously running.
+
+Description of Steps:
+
+1. Download GNS3 by following link on Lab document and follow the descriptions to set it up. After downloading and uploading the cisco router image to GNS3, choose the value 0x6050b114 on the idle-pc value page after clicking a bunch of next buttons.
+2. Once you have everything set up, drag and drop on the GNS3 software in order to create your network topology (copy image from lab document).
+3. Now we need to configure all of the devices on the network topology, first starting with R2.
+4. We can assign R2 to interface f0/0 with IP address 10.1.1.1/24 by first opening the R2 console with a right click on the image. Enter configure mode by typing config t and then enter interface f0/0 by typing interface FastEthernet0/0. The assign the correc ip address and mask by typing ip addr 10.1.1.1 255.255.255.0
+5. Type: no shut to bring interface up and then exit with control Z.
+6. You can check assigned ip addresses by typing show ip interface brief.
+7. Do the same thing for assigning R2 to interface f0/1 only with the correct ip addr (different one). 
+8. Do the same thing for assigning R3 to each of it's interfaces with the correct ip addr (create one for each).
+9. We now configure PC1 and assign its e0 interface address 10.1.1.2/24 by opening the PC1 console and typing 10.1.1.2/24 (its interface address) and then typing ip 10.1.1.2/24 10.1.1.1
+10. Do the same for PC2 and PC3 according to its assigned interface address.
+11. We can now test accessibility by pinging whichever device. For instance, if we want to test or ping PC1 to PC3, we would type ping ...IP address...
+12. To open network to public, we can configure router R2 with NAT by typing interface f0/0, ip nat inside, interface f0/1, ip nat outside, exit, access-list 10 permit 10.1.1.0 0.0.0.255, ip nat inside source list 10 interface f0/1 overload
+13. This should ultimately give us the NAT table and accessiblity to test our network topology.
